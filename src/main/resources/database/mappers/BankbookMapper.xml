@@ -4,20 +4,20 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.ksnx3684.s1.bankbook.BankbookDAO">
-	<select id="list" resultType="com.ksnx3684.s1.bankbook.BankbookDTO">
+	<select id="list" resultType="BankbookDTO">
 		SELECT * FROM BANKBOOK
 	</select>
 	
-	<insert id="add" parameterType="com.ksnx3684.s1.bankbook.BankbookDTO">
+	<insert id="add" parameterType="BankbookDTO">
 		INSERT INTO BANKBOOK (BOOKNUMBER, BOOKNAME, BOOKCONTENTS, BOOKRATE, BOOKSALE)
 		VALUES(BANKBOOK_SEQ.NEXTVAL, #{bookName}, #{bookContents}, #{bookRate}, #{bookSale})
 	</insert>
 	
-	<select id="detail" parameterType="com.ksnx3684.s1.bankbook.BankbookDTO" resultType="com.ksnx3684.s1.bankbook.BankbookDTO">
+	<select id="detail" parameterType="BankbookDTO" resultType="BankbookDTO">
 		SELECT * FROM BANKBOOK WHERE BOOKNUMBER = #{bookNumber}
 	</select>
 	
-	<delete id="delete" parameterType="com.ksnx3684.s1.bankbook.BankbookDTO">
+	<delete id="delete" parameterType="BankbookDTO">
 		DELETE BANKBOOK WHERE BOOKNUMBER = #{bookNumber}
 	</delete>
 </mapper>

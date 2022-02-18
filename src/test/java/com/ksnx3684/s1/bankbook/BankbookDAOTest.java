@@ -14,31 +14,33 @@ public class BankbookDAOTest extends MyJunitTest {
 	@Autowired
 	private BankbookDAO bankbookDAO;
 		
-	@Test
+//	@Test
 	public void check() {
 		assertNotNull(bankbookDAO);
 	}
 	
-	@Test
+//	@Test
 	public void listTest() throws Exception {
 		List<BankbookDTO> ar = bankbookDAO.list();
 		
 		assertNotEquals(0, ar.size());
 	}
 
-//	@Test
+	@Test
 	public void addTest() throws Exception {
-		BankbookDTO bankbookDTO = new BankbookDTO();
-		bankbookDTO.setBookName("t2");
-		bankbookDTO.setBookContents("c2");
-		bankbookDTO.setBookRate(3.12);
-		bankbookDTO.setBookSale(1);
-		int result = bankbookDAO.add(bankbookDTO);
-		
-		assertEquals(1, result);
+		for(int i = 0; i < 10; i++) {
+			BankbookDTO bankbookDTO = new BankbookDTO();
+			bankbookDTO.setBookName("bookName" + i);
+			bankbookDTO.setBookContents("Contents"+ i);
+			bankbookDTO.setBookRate(3.12+i);
+			bankbookDTO.setBookSale(1);
+			int result = bankbookDAO.add(bankbookDTO);
+		}
+		System.out.println("Insert Finish");
+//		assertEquals(1, result);
 	}
 	
-	@Test
+//	@Test
 	public void detailTest() throws Exception {
 		BankbookDTO bankbookDTO = new BankbookDTO();
 		bankbookDTO.setBookNumber(1L);
@@ -47,7 +49,7 @@ public class BankbookDAOTest extends MyJunitTest {
 		assertNotNull(bankbookDTO);
 	}
 	
-	@Test
+//	@Test
 	public void deleteTest() throws Exception {
 		BankbookDTO bankbookDTO = new BankbookDTO();
 		bankbookDTO.setBookNumber(2L);
