@@ -47,4 +47,11 @@ public class BankbookController {
 		int result = bankbookService.add(bankbookDTO);
 		return "redirect:./list";
 	}
+	
+	// DB에서 delete
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(BankbookDTO bankbookDTO) throws Exception {
+		int result = bankbookService.delete(bankbookDTO);
+		return "redirect:./list";
+	}
 }
