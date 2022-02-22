@@ -1,20 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Header 시작 -->
 <header class="header">
 	<nav class="nav_menu">
 		<ul>
-			<li><a href="/s2/">HOME</a></li>
-			<li><a href="/s2/emp/list">사원관리</a></li>
-			<li><a href="/s2/dept/list">부서관리</a></li>
-			<li><a href="/s2/notice/list?name=ksnx3684&age=27&name=lee">공지사항</a></li>
+			<li><a href="/s1/">HOME</a></li>
+			<li><a href="/s1/bankbook/list">Product</a></li>
+			<li><a href="/s1/qna/list">Q&A</a></li>
+			<li><a href="/s1/notice/list">공지사항</a></li>
 		</ul>	
 	</nav>
 	<nav class="nav_login">
 		<ul>
-			<li><a href="#">로그인</a></li>
-			<li><a href="#">회원가입</a></li>
+			<c:choose>
+				<c:when test="${not empty member}">
+					<li><a href="/s1/member/mypage"><span class="material-icons">account_circle</span></a></li>
+					<li><a href="/s1/member/logout"><span class="material-icons">logout</span></a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="/s1/member/login"><span class="material-icons">login</span></a></li>
+					<li><a href="/s1/member/join"><span class="material-icons">person_add</span></a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</nav>
 </header>

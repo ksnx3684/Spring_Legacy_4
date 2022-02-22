@@ -1,0 +1,10 @@
+.frm {
+    width: 20%;
+    height: 20%;
+    margin: 0 auto;
+}
+
+.frm fieldset {
+    border: none;
+
+}

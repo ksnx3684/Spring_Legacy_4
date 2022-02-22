@@ -6,7 +6,7 @@
 	<configuration>
 		<typeAliases>
 			<typeAlias type="com.ksnx3684.s1.bankbook.BankbookDTO" alias="BankbookDTO"/>
-			
+			<typeAlias type="com.ksnx3684.s1.member.MemberDTO" alias="MemberDTO"/>
 			<typeAlias type="java.lang.Long" alias="Long"/>
 		</typeAliases>
 	</configuration>
