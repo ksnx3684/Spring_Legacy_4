@@ -32,8 +32,8 @@ public class MemberController {
 	
 	// login 페이지 이동
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public void login(Model model, @CookieValue(value="remember", defaultValue = "", required = false)String rememberId) throws Exception {
-		// model.addAttribute("remember", rememberId); // 아이디 기억 기능
+	public void login(Model model, @CookieValue(value="remember", defaultValue = "", required = false) String rememberId) throws Exception {
+		// model.addAttribute("remember", rememberId); // model을 이용하여 아이디 기억 기능을 구현할 수도 있다. 단, 매개변수로 Model model을 선언할 것.
 		
 	}
 	//login 기능
