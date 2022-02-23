@@ -54,4 +54,18 @@ public class BankbookController {
 		int result = bankbookService.delete(bankbookDTO);
 		return "redirect:./list";
 	}
+	
+	// update
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public void update(BankbookDTO bankbookDTO, Model model) throws Exception {
+		bankbookDTO = bankbookService.detail(bankbookDTO);
+		model.addAttribute("dto", bankbookDTO);
+	}
+	
+	// update 수정작업
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(BankbookDTO bankbookDTO) throws Exception {
+		int result = bankbookService.update(bankbookDTO);
+		return "redirect:./list";
+	}
 }
