@@ -20,4 +20,9 @@
 	<delete id="delete" parameterType="BankbookDTO">
 		DELETE BANKBOOK WHERE BOOKNUMBER = #{bookNumber}
 	</delete>
+	
+	<update id="update" parameterType="BankbookDTO">
+		UPDATE BANKBOOK SET BOOKNAME = #{bookName}, BOOKCONTENTS = #{bookContents}, 
+		BOOKSALE = #{bookSale}, BOOKRATE = #{bookRate} WHERE BOOKNUMBER = #{bookNumber}
+	</update>
 </mapper>
