@@ -16,7 +16,7 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	// list
-	@RequestMapping(value="list", method=RequestMethod.GET)
+	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list(Model model) throws Exception {
 		List<NoticeDTO> ar = noticeService.list();
 		model.addAttribute("list", ar);
@@ -24,37 +24,44 @@ public class NoticeController {
 	}
 	
 	// detail
-	@RequestMapping(value="detail", method=RequestMethod.GET)
+	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public void detail(NoticeDTO noticeDTO, Model model) throws Exception {
 		noticeDTO = noticeService.detail(noticeDTO);
 		model.addAttribute("dto", noticeDTO);
 	}
 	
 	// add 이동
-	@RequestMapping(value="add", method=RequestMethod.GET)
+	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public void add() throws Exception {
 		
 	}
 	
 	// add 추가
-	@RequestMapping(value="add", method=RequestMethod.POST)
+	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String add(NoticeDTO noticeDTO) throws Exception {
 		int result = noticeService.add(noticeDTO);
-		
 		return "redirect:./list";
 	}
 	
-	// delete 이동
-	@RequestMapping(value="delete", method=RequestMethod.GET)
-	public void delete() throws Exception {
-		
-	}
-	
 	// delete 삭제
-	@RequestMapping(value="delete", method=RequestMethod.POST)
-	public void delete(NoticeDTO noticeDTO) throws Exception {
+	@RequestMapping("delete")
+	public String delete(NoticeDTO noticeDTO) throws Exception {
 		int result = noticeService.delete(noticeDTO);
+		return "redirect:./list";
 	}
 	
+	// update 이동
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public void update(NoticeDTO noticeDTO, Model model) throws Exception {
+		noticeDTO = noticeService.detail(noticeDTO);
+		model.addAttribute("dto", noticeDTO);
+	}
+	
+	// update 수정작업
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(NoticeDTO noticeDTO) throws Exception {
+		int result = noticeService.update(noticeDTO);
+		return "redirect:./list";
+	}
 
 }

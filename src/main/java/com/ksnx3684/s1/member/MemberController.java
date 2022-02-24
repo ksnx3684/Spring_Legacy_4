@@ -82,4 +82,20 @@ public class MemberController {
 		model.addAttribute("dto", memberDTO);
 	}
 	
+	// 개인정보 변경 페이지
+	@RequestMapping(value = "mychange", method = RequestMethod.GET)
+	public void mychange(HttpSession session, Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.mypage(memberDTO);
+		
+		model.addAttribute("dto", memberDTO);
+	}
+	
+	// 개인정보 변경 기능
+	@RequestMapping(value = "mychange", method = RequestMethod.POST)
+	public String mychange(MemberDTO memberDTO) throws Exception {
+		int result = memberService.mychange(memberDTO);
+	
+		return "redirect:./mypage";
+	}
 }

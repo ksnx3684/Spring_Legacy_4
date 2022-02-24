@@ -4,18 +4,21 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ksnx3684.s1.notice.NoticeDAO">
-	<select id="list" resultType="com.ksnx3684.s1.notice.NoticeDTO">
+	<select id="list" resultType="NoticeDTO">
 		SELECT * FROM NOTICE
 	</select>
-	<select id="detail" parameterType="com.ksnx3684.s1.notice.NoticeDTO" resultType="com.ksnx3684.s1.notice.NoticeDTO">
+	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
 		SELECT * FROM NOTICE WHERE NUM = #{num}
 	</select>
-	<insert id="add" parameterType="com.ksnx3684.s1.notice.NoticeDTO">
+	<insert id="add" parameterType="NoticeDTO">
 		INSERT INTO NOTICE(NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT)
-		VALUES(NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{writer},TO_DATE(SYSDATE,'YYYY-MM-DD'), #{hit})
+		VALUES(NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE, 0)
 	</insert>
-	<delete id="delete" parameterType="com.ksnx3684.s1.notice.NoticeDTO">
+	<delete id="delete" parameterType="NoticeDTO">
 		DELETE NOTICE WHERE NUM = #{num}
 	</delete>
+	<update id="update" parameterType="NoticeDTO">
+		UPDATE NOTICE SET TITLE = #{title}, CONTENTS = #{contents} WHERE NUM = #{num}
+	</update>
 
 </mapper>

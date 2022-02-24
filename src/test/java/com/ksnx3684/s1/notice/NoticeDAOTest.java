@@ -57,4 +57,5 @@ public class NoticeDAOTest extends MyJunitTest {
 		
 		assertEquals(1, result);
 	}
+	
 }
