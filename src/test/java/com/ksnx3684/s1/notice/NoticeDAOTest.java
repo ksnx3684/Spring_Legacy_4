@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ksnx3684.s1.MyJunitTest;
+import com.ksnx3684.s1.util.Pager;
 
 public class NoticeDAOTest extends MyJunitTest {
 
@@ -20,8 +21,8 @@ public class NoticeDAOTest extends MyJunitTest {
 	}
 	
 //	@Test
-	public void listTest() throws Exception {
-		List<NoticeDTO> ar = noticeDAO.list();
+	public void listTest(Pager pager) throws Exception {
+		List<NoticeDTO> ar = noticeDAO.list(pager);
 		
 		assertNotEquals(0, ar.size());
 	}

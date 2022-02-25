@@ -13,13 +13,13 @@
 	
 	<h1> Notice List Page</h1>
 	
-	<h3>
 	<table>
 		<tr>
-			<th>Title</th><th>Contents</th><th>Writer</th><th>RegDate</th><th>Hit</th><th><a href="./add">ADD</a></th>
+			<th>Num</th><th>Title</th><th>Contents</th><th>Writer</th><th>RegDate</th><th>Hit</th><th><a href="./add">ADD</a></th>
 		</tr>
 		<c:forEach items="${list}" var="notice">
 		<tr>
+			<td>${notice.num}</td>
 			<td><a href="./detail?num=${notice.num}">${notice.title}</a></td>
 			<td>${notice.contents}</td>
 			<td>${notice.writer}</td>
@@ -28,6 +28,16 @@
 		</tr>
 		</c:forEach>
 	</table>
-	</h3>
+	<div>
+		<c:if test="${pager.pre}">
+			<a href="./list?page=${pager.startNum - 1}">PREV</a>
+		</c:if>
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			<a href="./list?page=${i}">${i}</a>
+		</c:forEach>
+		<c:if test="${pager.next}">
+			<a href="./list?page=${pager.lastNum + 1}">NEXT</a>
+		</c:if>
+	</div>
 </body>
 </html>
