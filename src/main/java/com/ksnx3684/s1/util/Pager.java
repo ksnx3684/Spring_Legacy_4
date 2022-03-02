@@ -14,8 +14,8 @@ public class Pager {
 	
 	// -------------------- JSP 사용 변수
 	
-	private Long startNum;
-	private Long lastNum;
+	private Long startNum; // 블럭 내의 시작 페이지 번호
+	private Long lastNum; // 블럭 내의 끝 페이지 번호
 	
 	private boolean next;
 	private boolean pre;
@@ -54,7 +54,6 @@ public class Pager {
 		// curBlock startNum lastNum
 		// 1        1        10
 		// 2        11       20
-		
 		this.startNum = (curBlock - 1) * perBlock + 1;
 		this.lastNum = curBlock * perBlock;
 		
@@ -75,17 +74,20 @@ public class Pager {
 		}
 			
 	}
-		
+
+	
 	
 	public Long getPerPage() {
 		if(this.perPage == null || this.perPage < 1) {
 			this.perPage = 10L;
 		}
+
 		return perPage;
 	}
 	public void setPerPage(Long perPage) {
 		this.perPage = perPage;
 	}
+	
 	public Long getPage() {
 		if(this.page == null || this.page < 1) {
 			this.page = 1L;
@@ -109,6 +111,7 @@ public class Pager {
 	}
 	
 	
+	
 	public String getSearch() {
 		if(this.search == null) {
 			this.search="";
@@ -128,8 +131,7 @@ public class Pager {
 
 	public void setKind(String kind) {
 		this.kind = kind;
-	}
-	
+	}	
 	
 	public Long getStartNum() {
 		return startNum;

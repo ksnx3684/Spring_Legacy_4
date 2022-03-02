@@ -1,0 +1,12 @@
+.title {
+    display: table;
+    margin: auto;
+    margin-top: 2em;
+}
+.contents {
+    margin-top: 2em;
+}
+.menu {
+    display: flex;
+    justify-content: space-between;
+}

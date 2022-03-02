@@ -23,8 +23,8 @@ public class NoticeDAO {
 		return sqlSession.selectOne(NAMESPACE+"detail", noticeDTO);
 	}
 	
-	public Long total() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"total");
+	public Long total(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"total", pager);
 	}
 	
 	public int add(NoticeDTO noticeDTO) throws Exception {
@@ -33,5 +33,9 @@ public class NoticeDAO {
 	
 	public int delete(NoticeDTO noticeDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"delete", noticeDTO);
+	}
+	
+	public int update(NoticeDTO noticeDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"update", noticeDTO);
 	}
 }

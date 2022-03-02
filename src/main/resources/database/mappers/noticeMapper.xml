@@ -7,21 +7,48 @@
 	<select id="list" parameterType="Pager" resultType="NoticeDTO">
 		SELECT * FROM
 		(SELECT ROWNUM R, B.* FROM
-		(SELECT * FROM NOTICE WHERE NUM > 0 ORDER BY NUM DESC) B)
+		(SELECT * FROM NOTICE WHERE
+		NUM > 0
+		AND
+		<choose>
+			<when test="kind=='col1'">
+				TITLE
+			</when>
+			<otherwise>
+				CONTENTS
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+		ORDER BY NUM DESC) B)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
 		SELECT * FROM NOTICE WHERE NUM = #{num}
 	</select>
-	<select id="total" resultType="Long">
+	<select id="total" parameterType="Pager" resultType="Long">
 		SELECT COUNT(NUM) FROM NOTICE
+		WHERE
+		NUM > 0
+		AND
+		<choose>
+			<when test="kind=='col1'">
+				TITLE
+			</when>
+			<otherwise>
+				CONTENTS
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
 	</select>
 	<insert id="add" parameterType="NoticeDTO">
 		INSERT INTO NOTICE(NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT)
-		VALUES(NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{writer},TO_DATE(SYSDATE,'YYYY-MM-DD'), #{hit})
+		VALUES(NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE, 0)
 	</insert>
 	<delete id="delete" parameterType="NoticeDTO">
 		DELETE NOTICE WHERE NUM = #{num}
 	</delete>
+	<update id="update" parameterType="NoticeDTO">
+		UPDATE NOTICE SET TITLE = #{title}, CONTENTS = #{contents} WHERE NUM = #{num}
+	</update>
 
 </mapper>

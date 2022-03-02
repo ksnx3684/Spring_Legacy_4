@@ -20,5 +20,8 @@
 	<h2>REGDATE : ${dto.regDate}</h2>
 	<h2>HIT : ${dto.hit}</h2>
 	
+	<a href="./update?num=${dto.num}">수정</a>
+	<a href="./delete?num=${dto.num}">삭제</a>
+	
 </body>
 </html>

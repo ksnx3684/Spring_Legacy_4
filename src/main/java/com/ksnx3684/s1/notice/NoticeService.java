@@ -17,7 +17,7 @@ public class NoticeService {
 	public List<NoticeDTO> list(Pager pager) throws Exception {
 		pager.makeRow();
 		
-		Long totalcount = noticeDAO.total();
+		Long totalcount = noticeDAO.total(pager);
 		pager.makeNum(totalcount);
 		List<NoticeDTO> ar = noticeDAO.list(pager);
 		return ar;
@@ -36,5 +36,10 @@ public class NoticeService {
 	// delete
 	public int delete(NoticeDTO noticeDTO) throws Exception {
 		return noticeDAO.delete(noticeDTO);
+	}
+	
+	// update
+	public int update(NoticeDTO noticeDTO) throws Exception {
+		return noticeDAO.update(noticeDTO);
 	}
 }
