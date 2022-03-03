@@ -87,7 +87,6 @@ public class Pager {
 	public void setPerPage(Long perPage) {
 		this.perPage = perPage;
 	}
-	
 	public Long getPage() {
 		if(this.page == null || this.page < 1) {
 			this.page = 1L;
@@ -121,17 +120,17 @@ public class Pager {
 				
 		return search;
 	}
-
 	public void setSearch(String search) {
 		this.search = search;
 	}
 	public String getKind() {
 		return kind;
 	}
-
 	public void setKind(String kind) {
 		this.kind = kind;
 	}	
+	
+	
 	
 	public Long getStartNum() {
 		return startNum;
@@ -145,6 +144,7 @@ public class Pager {
 	public void setLastNum(Long lastNum) {
 		this.lastNum = lastNum;
 	}
+	
 	
 	
 	public boolean isNext() {
