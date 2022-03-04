@@ -29,6 +29,11 @@ public class MemberController {
 		int result = memberService.join(memberDTO);
 		return "redirect:../";
 	}
+	// join check
+	@RequestMapping(value = "joinCheck", method = RequestMethod.GET)
+	public void joinCheck() throws Exception {
+		
+	}
 	
 	// login 페이지 이동
 	@RequestMapping(value = "login", method = RequestMethod.GET)
@@ -55,13 +60,24 @@ public class MemberController {
 		
 		memberDTO = memberService.login(memberDTO);
 		
-		String path = "redirect:./login";
+//		String path = "redirect:./login";
+//		
+//		if(memberDTO != null) { // sql상에서 id와 pw가 맞으면 id, name값을 반환하고 틀리면 null값을 반환한다
+//			session.setAttribute("member", memberDTO);
+//			path = "redirect:../";
+//		}
 		
-		if(memberDTO != null) { // sql상에서 id와 pw가 맞으면 id, name값을 반환하고 틀리면 null값을 반환한다
+		String message = "Login Fail";
+		String p = "./login";
+		
+		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-			path = "redirect:../";
+			message = "Login Success";
+			p="../";
 		}
-		
+		model.addAttribute("message", message);
+		model.addAttribute("path", p);
+		String path = "common/result";
 		return path;
 		
 	}
