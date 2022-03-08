@@ -33,9 +33,24 @@ public class BankbookController {
 	
 	// detail
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public void detail(BankbookDTO bankbookDTO, Model model) throws Exception {
+	public String detail(BankbookDTO bankbookDTO, Model model) throws Exception {
 		bankbookDTO = bankbookService.detail(bankbookDTO);
-		model.addAttribute("dto", bankbookDTO);
+		
+		// 조회가 성공하면 출력
+		// 조회가 실패하면 alert로 '없는 번호 입니다' 출력 후 다시 list 이동
+		// common.result.jsp 활용
+		String view = "common/result";
+		
+		if(bankbookDTO != null) {
+			view = "bankbook/detail";
+			model.addAttribute("dto", bankbookDTO);
+		} else {
+			model.addAttribute("message", "없는 번호입니다");
+			model.addAttribute("path", "./list");
+		}
+		
+		return view;
+		
 	}
 	
 	// add form 이동
@@ -53,9 +68,20 @@ public class BankbookController {
 	
 	// DB에서 delete
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
-	public String delete(BankbookDTO bankbookDTO) throws Exception {
+	public String delete(BankbookDTO bankbookDTO, Model model) throws Exception {
 		int result = bankbookService.delete(bankbookDTO);
-		return "redirect:./list";
+		
+		String view = "common/result";
+		
+		if(result != 0) {
+			model.addAttribute("message", "삭제되었습니다");
+			model.addAttribute("path", "./list");
+		} else {
+			model.addAttribute("message", "삭제에 실패했습니다");
+			model.addAttribute("path", "./list");
+		}
+		
+		return view;
 	}
 	
 	// update
