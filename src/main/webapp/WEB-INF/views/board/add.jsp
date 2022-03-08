@@ -11,17 +11,15 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	
-	<h1> Notice Detail Page</h1>
+	<h1>${board} Add Page</h1>
 	
-	<h2>NUM : ${dto.num}</h2>
-	<h2>TITLE : ${dto.title}</h2>
-	<h2>CONTENTS : ${dto.contents}</h2>
-	<h2>WRITER : ${dto.writer}</h2>
-	<h2>REGDATE : ${dto.regDate}</h2>
-	<h2>HIT : ${dto.hit}</h2>
-	
-	<a href="./update?num=${dto.num}">수정</a>
-	<a href="./delete?num=${dto.num}">삭제</a>
+	<form action="./add" method="POST">
+		제목<input type="text" placeholder="제목" name="title">
+		작성자<input type="text" placeholder="작성자" name="writer">
+		내용<textarea rows="20" cols="40" name="contents"></textarea>
+		
+		<button type="submit">작성</button>
+	</form>
 	
 </body>
 </html>

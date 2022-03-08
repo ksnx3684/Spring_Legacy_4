@@ -1,9 +1,9 @@
-package com.ksnx3684.s1.notice;
+package com.ksnx3684.s1.board;
 
 import java.sql.Date;
 
-public class NoticeDTO {
-
+public class BoardDTO {
+	
 	private Long num;
 	private String title;
 	private String contents;
@@ -47,5 +47,5 @@ public class NoticeDTO {
 	public void setHit(Integer hit) {
 		this.hit = hit;
 	}
-
+	
 }

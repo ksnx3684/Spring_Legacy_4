@@ -11,14 +11,15 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	
-	<h1>Notice Add Page</h1>
+	<h1>${board} Reply Page</h1>
 	
-	<form action="./add" method="POST">
+	<form action="./reply" method="POST">
+		<input type="hidden" value="${dto.num}" name="num">
 		제목<input type="text" placeholder="제목" name="title">
 		작성자<input type="text" placeholder="작성자" name="writer">
 		내용<textarea rows="20" cols="40" name="contents"></textarea>
 		
-		<button type="submit">작성</button>
+		<button type="submit">Reply</button>
 	</form>
 	
 </body>

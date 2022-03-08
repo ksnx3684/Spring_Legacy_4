@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ksnx3684.s1.notice.NoticeDAO">
+<mapper namespace="com.ksnx3684.s1.board.notice.NoticeDAO">
 	<select id="list" parameterType="Pager" resultType="NoticeDTO">
 		SELECT * FROM
 		(SELECT ROWNUM R, B.* FROM
@@ -14,8 +14,11 @@
 			<when test="kind=='col1'">
 				TITLE
 			</when>
-			<otherwise>
+			<when test="kind=='col2'">
 				CONTENTS
+			</when>
+			<otherwise>
+				WRITER
 			</otherwise>
 		</choose>
 		LIKE '%'||#{search}||'%'
@@ -34,8 +37,11 @@
 			<when test="kind=='col1'">
 				TITLE
 			</when>
-			<otherwise>
+			<when test="kind=='col2'">
 				CONTENTS
+			</when>
+			<otherwise>
+				WRITER
 			</otherwise>
 		</choose>
 		LIKE '%'||#{search}||'%'

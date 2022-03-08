@@ -11,12 +11,12 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	
-	<h1> Notice Update Page</h1>
+	<h1>${board} Update Page</h1>
 	
 	<form action="./update" method="POST">
 		<input type="hidden" name="num" readonly="readonly" value="${dto.num}">
 		제목<input type="text" placeholder="제목" name="title" value="${dto.title}">
-		작성자<input type="text" name="writer" readonly="readonly" value="${dto.writer}">
+		작성자<input type="text" name="writer" readonly="readonly" value="${dto.writer}" disabled>
 		내용<textarea rows="20" cols="40" name="contents">${dto.contents}</textarea>
 		<input type="hidden" name="regDate" value="${dto.regDate}">
 		<input type="hidden" name="hit" value="${dto.hit}">

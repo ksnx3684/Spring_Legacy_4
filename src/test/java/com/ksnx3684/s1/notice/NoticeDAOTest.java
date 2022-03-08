@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ksnx3684.s1.MyJunitTest;
+import com.ksnx3684.s1.board.notice.NoticeDAO;
+import com.ksnx3684.s1.board.notice.NoticeDTO;
 import com.ksnx3684.s1.util.Pager;
 
 public class NoticeDAOTest extends MyJunitTest {
