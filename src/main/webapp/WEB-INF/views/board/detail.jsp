@@ -23,7 +23,9 @@
 	<a href="./list">LIST</a>
 	<a href="./update?num=${dto.num}">수정</a>
 	<a href="./delete?num=${dto.num}">삭제</a>
-	<a href="./reply?num=${dto.num}">Reply</a>
+	<c:if test="${board ne 'Notice'}">
+		<a href="./reply?num=${dto.num}">Reply</a>
+	</c:if>
 	
 </body>
 </html>
