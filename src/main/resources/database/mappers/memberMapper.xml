@@ -8,14 +8,35 @@
 		INSERT INTO MEMBER (ID, PW, NAME, PHONE, EMAIL)
 		VALUES(#{id}, #{pw}, #{name}, #{phone}, #{email})
 	</insert>
+	<insert id="addFile" parameterType="MemberFileDTO">
+		INSERT INTO MEMBERFILE (FILENUM, ID, FILENAME, ORINAME)
+		VALUES(FILE_SEQ.NEXTVAL, #{id}, #{fileName}, #{oriName})
+	</insert>
 	
 	<select id="login" parameterType="MemberDTO" resultType="MemberDTO">
 		SELECT ID, NAME FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
 	</select>
 	
-	<select id="mypage" parameterType="MemberDTO" resultType="MemberDTO">
-		SELECT ID, NAME, PHONE, EMAIL FROM MEMBER WHERE ID = #{id}
+	<select id="mypage" parameterType="MemberDTO" resultMap="mypageResult">
+		SELECT ID, M.NAME, M.PHONE, M.EMAIL, MF.FILENUM, MF.FILENAME, MF.ORINAME
+		FROM MEMBER M
+		LEFT JOIN
+		MEMBERFILE MF
+		USING(ID)
+		WHERE ID = #{id}
 	</select>
+	<resultMap type="MemberDTO" id="mypageResult">
+		<id column="id" property="id"/> <!-- PK -->
+		<result column="name" property="name"/> <!-- PK를 제외한 나머지 -->
+		<result column="phone" property="phone"/>
+		<result column="email" property="email"/>
+		<association property="memberFileDTO" javaType="memberFileDTO">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</association>
+	</resultMap>
+	
 	<update id="mychange" parameterType="MemberDTO">
 		UPDATE MEMBER SET PHONE = #{phone}, EMAIL = #{email} WHERE ID = #{id}
 	</update>

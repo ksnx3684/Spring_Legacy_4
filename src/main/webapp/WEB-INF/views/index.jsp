@@ -12,6 +12,9 @@
 <body>
 
 	<c:import url="./template/header.jsp"></c:import>
+	<div>
+		<img alt="" src="./resources/images/kellen-riggin-K3iBw8t3JFU-unsplash.jpg">
+	</div>
 	
 	<h1>Index Page</h1>
 	<h3><span class="material-icons">login</span></h3>
@@ -31,6 +34,7 @@
 		</c:if>
 		
 	</div>
+	<img alt="" src="./resources/upload/member/5d6e4679-5eec-4bbe-9d5a-65c87c093821_bom.png">
 
 </body>
 </html>

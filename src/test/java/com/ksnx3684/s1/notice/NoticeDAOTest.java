@@ -23,20 +23,20 @@ public class NoticeDAOTest extends MyJunitTest {
 	}
 	
 //	@Test
-	public void listTest(Pager pager) throws Exception {
-		List<NoticeDTO> ar = noticeDAO.list(pager);
-		
-		assertNotEquals(0, ar.size());
-	}
+//	public void listTest(Pager pager) throws Exception {
+//		List<NoticeDTO> ar = noticeDAO.list(pager);
+//		
+//		assertNotEquals(0, ar.size());
+//	}
 	
 //	@Test
-	public void detailTest() throws Exception {
-		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNum(1L);
-		noticeDTO = noticeDAO.detail(noticeDTO);
-		
-		assertNotNull(noticeDTO);
-	}
+//	public void detailTest() throws Exception {
+//		NoticeDTO noticeDTO = new NoticeDTO();
+//		noticeDTO.setNum(1L);
+//		noticeDTO = noticeDAO.detail(noticeDTO);
+//		
+//		assertNotNull(noticeDTO);
+//	}
 	
 	@Test
 	public void addTest() throws Exception {
