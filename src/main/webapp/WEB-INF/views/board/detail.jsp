@@ -19,11 +19,16 @@
 	<h2>WRITER : ${dto.writer}</h2>
 	<h2>REGDATE : ${dto.regDate}</h2>
 	<h2>HIT : ${dto.hit}</h2>
+	<div>
+		<c:forEach items="${dto.fileDTOs}" var="f">
+			<a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+		</c:forEach>
+	</div>
 	
 	<a href="./list">LIST</a>
 	<a href="./update?num=${dto.num}">수정</a>
 	<a href="./delete?num=${dto.num}">삭제</a>
-	<c:if test="${board ne 'Notice'}">
+	<c:if test="${board ne 'notice'}">
 		<a href="./reply?num=${dto.num}">Reply</a>
 	</c:if>
 	
