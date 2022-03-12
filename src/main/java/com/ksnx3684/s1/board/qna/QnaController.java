@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ksnx3684.s1.board.BoardDTO;
-import com.ksnx3684.s1.board.notice.NoticeDTO;
 import com.ksnx3684.s1.util.Pager;
 
 @Controller
