@@ -41,4 +41,8 @@ public class MemberService {
 	public int mychange(MemberDTO memberDTO) throws Exception {
 		return memberDAO.mychange(memberDTO);
 	}
+	
+	public MemberFileDTO detailFile(MemberFileDTO memberFileDTO) throws Exception {
+		return memberDAO.detailFile(memberFileDTO);
+	}
 }

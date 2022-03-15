@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/member/*")
@@ -18,6 +20,11 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@ModelAttribute("board")
+	public String board() {
+		return "member";
+	}
 
 	// join 페이지 이동
 	@RequestMapping(value = "join", method = RequestMethod.GET)
@@ -116,5 +123,22 @@ public class MemberController {
 		int result = memberService.mychange(memberDTO);
 	
 		return "redirect:./mypage";
+	}
+	
+	// 파일 다운로드 기능
+	@RequestMapping(value = "photoDown", method = RequestMethod.GET)
+	public ModelAndView fileDown(MemberFileDTO memberFileDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("fileDown");
+		
+		memberFileDTO = memberService.detailFile(memberFileDTO);
+		
+		mv.addObject("file", memberFileDTO); // model에 "file" 이름으로 memberFileDTO 타입의 파일을 넣는다.
+		
+		return mv; // Filedown 클래스로 이동
+		
+		// model로 설정할 경우
+		// 매개변수로 model을 추가로 불러오고 memberFileDTO에 대입하는 것은 동일하게 처리하고
+		// return 타입을 String으로 설정후 return을 "fileDown"으로 준다
 	}
 }

@@ -30,4 +30,8 @@ public class MemberDAO {
 	public int mychange(MemberDTO memberDTO) throws Exception {
 		return sqlSession.update(NAMESPACE+"mychange", memberDTO);
 	}
+	
+	public MemberFileDTO detailFile(MemberFileDTO memberFileDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"detailFile", memberFileDTO);
+	}
 }

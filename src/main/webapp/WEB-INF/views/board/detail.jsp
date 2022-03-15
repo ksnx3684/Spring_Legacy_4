@@ -22,9 +22,9 @@
 	<div>
 		<c:forEach items="${dto.fileDTOs}" var="f">
 			<a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+			<a href="./photoDown?fileNum=${f.fileNum}">${f.oriName}</a>
 		</c:forEach>
 	</div>
-	
 	<a href="./list">LIST</a>
 	<a href="./update?num=${dto.num}">수정</a>
 	<a href="./delete?num=${dto.num}">삭제</a>

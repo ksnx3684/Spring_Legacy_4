@@ -41,7 +41,7 @@ public class QnaService implements BoardService {
 			if(files[i].isEmpty()) {
 				continue;
 			}
-			String fileName = fileManager.save(files[i], "resources/upload/notice/");
+			String fileName = fileManager.save(files[i], "resources/upload/qna/");
 			
 			// 2. DB에 저장
 			QnaFileDTO qnaFileDTO = new QnaFileDTO();
@@ -85,6 +85,10 @@ public class QnaService implements BoardService {
 		result = qnaDAO.reply(qnaDTO);
 		
 		return result;
+	}
+	
+	public QnaFileDTO detailFile(QnaFileDTO qnaFileDTO) throws Exception {
+		return qnaDAO.detaiFile(qnaFileDTO);
 	}
 
 }

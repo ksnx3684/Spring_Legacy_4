@@ -19,7 +19,7 @@ public class FileManager {
 	
 	public String save(MultipartFile multipartFile, String path) throws Exception {
 		// 파일저장은 tomcat이 아니라 os에서 저장
-		//path = "/resources/upload/member";
+		// path = "/resources/upload/member";
 		String realPath = servletContext.getRealPath(path);
 		System.out.println(realPath);
 		
@@ -55,6 +55,17 @@ public class FileManager {
 		FileCopyUtils.copy(multipartFile.getBytes(), file);
 				
 		return fileName;
+	}
+	
+	public boolean remove(String path, String fileName) throws Exception {
+		// 로컬디스크에서 파일 삭제
+		// 저장된 폴더명, 저장된 파일명
+		path = servletContext.getRealPath(path);
+		
+		File file = new File(path, fileName);
+		
+		return file.delete();
+		
 	}
 
 }

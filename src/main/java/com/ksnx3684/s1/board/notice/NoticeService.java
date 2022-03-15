@@ -42,7 +42,7 @@ public class NoticeService implements BoardService{
 			if(files[i].isEmpty()) {
 				continue;
 			}
-			String fileName = fileManager.save(files[i], "resources/upload/notice/");
+			String fileName = fileManager.save(files[i], "resources/upload/notice/"); // 해당 경로에 파일저장
 			
 			// 2. DB에 저장
 			NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
@@ -62,7 +62,25 @@ public class NoticeService implements BoardService{
 
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
-		return noticeDAO.delete(boardDTO);
+		// num으로 로컬디스크에 저장된 파일명 조회
+		List<NoticeFileDTO> list = noticeDAO.listFile(boardDTO);
+		
+		int result = noticeDAO.delete(boardDTO);
+		
+		if(result > 0) {
+			for(NoticeFileDTO dto : list) {
+				// check가 true면 성공, false면 실패
+				boolean check = fileManager.remove("resources/upload/notice/", dto.getFileName());
+			}
+		}
+		
+		return result;
 	}
+	
+	
+	public NoticeFileDTO detailFile(NoticeFileDTO noticeFileDTO) throws Exception {
+		return noticeDAO.detailFile(noticeFileDTO);
+	}
+	
 
 }

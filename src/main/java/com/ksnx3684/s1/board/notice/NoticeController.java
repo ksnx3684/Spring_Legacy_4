@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ksnx3684.s1.board.BoardDTO;
 import com.ksnx3684.s1.util.Pager;
@@ -81,6 +82,19 @@ public class NoticeController {
 	public String update(NoticeDTO noticeDTO) throws Exception {
 		int result = noticeService.update(noticeDTO);
 		return "redirect:./list";
+	}
+	
+	// 파일 다운로드 기능
+	@RequestMapping(value = "photoDown", method = RequestMethod.GET)
+	public ModelAndView fileDown(NoticeFileDTO noticeFileDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("fileDown");
+		
+		noticeFileDTO = noticeService.detailFile(noticeFileDTO);
+		
+		mv.addObject("file", noticeFileDTO);
+		
+		return mv;
 	}
 
 }

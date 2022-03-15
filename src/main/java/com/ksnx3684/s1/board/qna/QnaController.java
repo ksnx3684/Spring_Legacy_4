@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ksnx3684.s1.board.BoardDTO;
 import com.ksnx3684.s1.util.Pager;
@@ -95,5 +96,18 @@ public class QnaController {
 	public String reply(QnaDTO qnaDTO) throws Exception {
 		int result = qnaService.reply(qnaDTO);
 		return "redirect:./list";
+	}
+	
+	// 파일 다운로드 기능
+	@RequestMapping(value = "photoDown", method = RequestMethod.GET)
+	public ModelAndView fileDown(QnaFileDTO qnaFileDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("fileDown"); // @component로 annotation한 fileDown 클래스를 실행
+		
+		qnaFileDTO = qnaService.detailFile(qnaFileDTO);
+		
+		mv.addObject("file", qnaFileDTO);
+		
+		return mv;
 	}
 }
