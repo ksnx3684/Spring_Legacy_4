@@ -20,8 +20,12 @@
 	<h2>REGDATE : ${dto.regDate}</h2>
 	<h2>HIT : ${dto.hit}</h2>
 	<div>
-		<c:forEach items="${dto.fileDTOs}" var="f">
+		<c:forEach items="${dto.fileDTOs}" var="f"> <!-- 파일 미리보기 -->
 			<a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+		</c:forEach>
+	</div>
+	<div>
+		<c:forEach items="${dto.fileDTOs}" var="f"> <!-- 파일 다운로드 -->
 			<a href="./photoDown?fileNum=${f.fileNum}">${f.oriName}</a>
 		</c:forEach>
 	</div>

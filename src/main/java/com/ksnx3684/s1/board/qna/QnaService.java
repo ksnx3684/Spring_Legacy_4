@@ -60,7 +60,18 @@ public class QnaService implements BoardService {
 
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
-		return qnaDAO.delete(boardDTO);
+		// num으로 로컬디스크에 저장된 파일명 조회
+		List<QnaFileDTO> list = qnaDAO.listFile(boardDTO);
+		
+		int result = qnaDAO.delete(boardDTO);
+		
+		if(result > 0) {
+			for(QnaFileDTO dto : list) {
+				boolean check = fileManager.remove("/resources/upload/qna/", dto.getFileName());
+			}
+		}
+		
+		return result;
 	}
 	
 	// 부모 인터페이스에 없기 때문에 직접 만들어야함
@@ -88,7 +99,7 @@ public class QnaService implements BoardService {
 	}
 	
 	public QnaFileDTO detailFile(QnaFileDTO qnaFileDTO) throws Exception {
-		return qnaDAO.detaiFile(qnaFileDTO);
+		return qnaDAO.detailFile(qnaFileDTO);
 	}
 
 }
