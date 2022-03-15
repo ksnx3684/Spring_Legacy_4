@@ -15,7 +15,7 @@
 	
 	<form action="./add" method="POST" enctype="multipart/form-data">
 		제목<input type="text" placeholder="제목" name="title" id="title">
-		작성자<input type="text" placeholder="작성자" name="writer" id="writer">
+		작성자<input type="text" name="writer" id="writer" readonly="readonly" value="${member.id}">
 		내용<textarea rows="20" cols="40" name="contents" id="contents"></textarea>
 		
 		<div>

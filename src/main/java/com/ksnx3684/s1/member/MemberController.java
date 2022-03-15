@@ -81,7 +81,7 @@ public class MemberController {
 		String p = "./login";
 		
 		if(memberDTO != null) {
-			session.setAttribute("member", memberDTO);
+			session.setAttribute("member", memberDTO); // member라는 이름으로 로그인 세션을 넣어주기
 			message = "Login Success";
 			p="../";
 		}

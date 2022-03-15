@@ -30,7 +30,10 @@
 		
 		<table class="table-basic">
 			<tr>
-				<th>Num</th><th>Title</th><th>Contents</th><th>Writer</th><th>RegDate</th><th>Hit</th><th><a href="./add">ADD</a></th>
+				<th>Num</th><th>Title</th><th>Contents</th><th>Writer</th><th>RegDate</th><th>Hit</th>
+				<c:if test="${not empty member}">
+					<th><a href="./add">ADD</a></th>
+				</c:if>
 			</tr>
 			<c:forEach items="${list}" var="dto">
 			<tr>
