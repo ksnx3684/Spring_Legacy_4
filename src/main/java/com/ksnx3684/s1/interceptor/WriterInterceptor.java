@@ -3,7 +3,6 @@ package com.ksnx3684.s1.interceptor;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.View;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,6 +23,8 @@ public class WriterInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		boolean check = true;
+		
+		System.out.println("Writer Interceptor");
 		
 		Long num = Long.parseLong(request.getParameter("num"));
 		
