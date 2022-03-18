@@ -46,13 +46,13 @@
         	<input type="file" name="photo" id="photo">
         </fieldset>
         <fieldset>
-        	<button type="submit" id="btn">JOIN</button>
-        	<!-- <button type="button" id="btn">JOIN</button> -->
+        	<!-- <button type="submit" id="btn">JOIN</button> -->
+        	<button type="button" id="btn">JOIN</button>
         </fieldset>
         
     </form>
     
-    <!-- <script type="text/javascript" src="../resources/js/join2.js"></script> -->
+    <script type="text/javascript" src="../resources/js/join2.js"></script>
     
 </body>
 </html>

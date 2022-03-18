@@ -16,7 +16,10 @@ writer.addEventListener("", function(){
 
 
 btn.addEventListener("click", function(){
-    if(title.value == '' && writer == ''){
-        alert("필수 항목을 입력하십시오");
+    if(title.value == ''){
+        alert("제목을 입력하십시오");
+        return;
+    } else {
+        frm.submit();
     }
 })
