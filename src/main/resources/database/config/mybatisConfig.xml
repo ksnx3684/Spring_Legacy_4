@@ -10,6 +10,7 @@
 			<typeAlias type="com.ksnx3684.s1.member.MemberFileDTO" alias="MemberFileDTO"/>
 			<typeAlias type="com.ksnx3684.s1.board.notice.NoticeDTO" alias="NoticeDTO"/>
 			<typeAlias type="com.ksnx3684.s1.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
+			<typeAlias type="com.ksnx3684.s1.board.notice.noticeReply.NoticeReplyDTO" alias="NoticeReplyDTO"/>
 			<typeAlias type="com.ksnx3684.s1.board.qna.QnaDTO" alias="QnaDTO"/>
 			<typeAlias type="com.ksnx3684.s1.board.qna.QnaFileDTO" alias="QnaFileDTO"/>
 			<typeAlias type="com.ksnx3684.s1.board.BoardDTO" alias="BoardDTO"/>

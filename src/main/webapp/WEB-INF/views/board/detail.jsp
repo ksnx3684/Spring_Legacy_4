@@ -29,6 +29,20 @@
 			<a href="./photoDown?fileNum=${f.fileNum}">${f.oriName}</a>
 		</c:forEach>
 	</div>
+	
+	<hr>
+	
+	<div>
+		<input type="hidden" name="num" value="${dto.num}" id="num">
+		<input type="text" readonly name="writer" value="${member.id}" id="writer">
+		<textarea rows="" cols="" name="contents" id="contents"></textarea>
+		<button type="button" id="reply">Reply</button>
+	</div>
+
+	<table id="replyResult">
+		
+	</table>
+	
 	<a href="./list">LIST</a>
 	<c:if test="${member.id eq dto.writer}">
 		<a href="./update?num=${dto.num}">수정</a>
@@ -37,6 +51,8 @@
 	<c:if test="${board ne 'notice'}">
 		<a href="./reply?num=${dto.num}">Reply</a>
 	</c:if>
+
+	<script src="../resources/js/noticeReply.js"></script>
 	
 </body>
 </html>
