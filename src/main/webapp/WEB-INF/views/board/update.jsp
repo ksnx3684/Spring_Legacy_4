@@ -21,8 +21,25 @@
 		<input type="hidden" name="regDate" value="${dto.regDate}">
 		<input type="hidden" name="hit" value="${dto.hit}">
 		
+		<div id="files">
+			<c:forEach items="${dto.fileDTOs}" var="f">
+				<div>
+					${f.oriName}<button type="button" data-fileNum="${f.fileNum}" class="fileDeleteBtn">X</button>
+				</div>
+			</c:forEach>
+		</div>
+		
+		<div id="fileResult">
+			
+		</div>
+
+		<div>
+			<button type="button" id="fileAdd">FileAdd</button>
+		</div>
+		
+		
 		<button type="submit">작성</button>
 	</form>
-	
+	<script type="text/javascript" src="../resources/js/file.js"></script>
 </body>
 </html>

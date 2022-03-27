@@ -22,4 +22,8 @@ public class NoticeReplyService {
 	public int delete(NoticeReplyDTO noticeReplyDTO) throws Exception {
 		return noticeReplyDAO.delete(noticeReplyDTO);
 	}
+	
+	public int update(NoticeReplyDTO noticeReplyDTO) throws Exception {
+		return noticeReplyDAO.update(noticeReplyDTO);
+	}
 }

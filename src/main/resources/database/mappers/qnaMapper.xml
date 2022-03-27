@@ -97,5 +97,7 @@
 		INSERT INTO QNA(NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH)
 		VALUES(QNA_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{ref}, #{step}, #{depth})
 	</insert>
-
+	<delete id="fileDelete" parameterType="QnaFileDTO">
+		DELETE QNAFILE WHERE FILENUM = #{fileNum}
+	</delete>
 </mapper>
